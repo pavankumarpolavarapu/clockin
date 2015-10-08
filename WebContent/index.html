@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<style type="text/css">
+</style>
+
+<script src="resources/sap-ui-core.js" id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.m,sap.ui.commons,sap.ui.layout"
+	data-sap-ui-theme="sap_bluecrystal">
+	
+</script>
+<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+<style type="text/css">
+
+.formText{
+	margin-top: 10px;
+}
+
+.button{
+width: 100%;
+margin-top: 20px;
+}
+</style>
+<script>
+	sap.ui.localResources("clock_in");
+
+	var oApp = new sap.m.SplitApp("appId", {});
+	var oMain = sap.ui.view({
+		id : "idMain",
+		viewName : "clock_in.Main",
+		type : sap.ui.core.mvc.ViewType.JS
+	})
+
+	var oDetail = sap.ui.view({
+		id : "idDetail",
+		viewName : "clock_in.InitDetail",
+		type : sap.ui.core.mvc.ViewType.JS
+	})
+
+	var oClockIn = sap.ui.view({
+		id : "idClockIn",
+		viewName : "clock_in.ClockIn",
+		type : sap.ui.core.mvc.ViewType.JS
+	});
+	var oClockOut = sap.ui.view({
+		id : "idClockOut",
+		viewName : "clock_in.ClockOut",
+		type : sap.ui.core.mvc.ViewType.JS
+	});
+	oApp.addMasterPage(oMain);
+	oApp.addDetailPage(oDetail);
+	oApp.addDetailPage(oClockIn);
+	oApp.addDetailPage(oClockOut);
+	oApp.setInitialDetail("idDetail");
+	oApp.setInitialMaster("idMain");
+	oApp.setMode("PopoverMode");
+	oApp.placeAt("content");
+</script>
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>
